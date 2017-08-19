@@ -81,8 +81,6 @@
 		```
 		* 出列
 			> 出列时根据当前优先级（self.curprio）从相应队列中取出url，并根据情况销毁队列、重置当前优先级
-			
-			> 
 			```
 			if self.curprio is None:
             	return
@@ -94,7 +92,7 @@
             	prios = [p for p, q in self.queues.items() if len(q) > 0]
             	self.curprio = min(prios) if prios else None
         	return m
-			```
+		```
 3. 下载中间件
 	> 总结：**返回request**则重新调度，**返回None**继续后续处理，**抛出异常**process_exception或errback将会被调用，**返回response**会继续后续处理或进入process_response回调链
 	* process_request方法

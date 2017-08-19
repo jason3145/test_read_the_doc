@@ -69,18 +69,21 @@
 			```
 	* 优先级队列调度原理
 		* 初始化
-			> 根据传入的优先级列表(startprios=())及创建队列的工厂方法初始化队列（此处为0，_newmq），并设置当前使用队列的优先级```self.curprio = min(startprios) if startprios else None```
+			> 根据传入的优先级列表(startprios=())及创建队列的工厂方法初始化队列（此处为0，_newmq），并设置当前使用队列的优先级
+			```self.curprio = min(startprios) if startprios else None```
 		* 入列
 			> 入列时将request根据其优先级push到相应队列，并根据情况改变当前优先级
 			
-			> ``` 
+			> 
+			``` 
 			if self.curprio is None or priority < self.curprio:
             	self.curprio = priority
-            ```
+		```
 		* 出列
 			> 出列时根据当前优先级（self.curprio）从相应队列中取出url，并根据情况销毁队列、重置当前优先级
 			
-			> ```
+			> 
+			```
 			if self.curprio is None:
             	return
         	q = self.queues[self.curprio]

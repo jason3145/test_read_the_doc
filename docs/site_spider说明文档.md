@@ -73,8 +73,6 @@
 			```self.curprio = min(startprios) if startprios else None```
 		* 入列
 			> 入列时将request根据其优先级push到相应队列，并根据情况改变当前优先级
-			
-			> 
 			``` 
 			if self.curprio is None or priority < self.curprio:
             	self.curprio = priority
